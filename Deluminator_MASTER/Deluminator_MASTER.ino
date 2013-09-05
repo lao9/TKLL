@@ -1,9 +1,37 @@
-/** LED Brighter/Dimmer Device Code
-Created by Tyler Hobbs, Lucy Corippo, Kavitha Prasanna, Lauren Oliveri
-*/
+/** Deluminator Device (LED Brighter/Dimmer) Code
+ * Created by Tyler Hobbs, Lucy Corippo, Kavitha Prasanna, Lauren Oliveri
+ * September 5, 2013
+ */
 
-void setup();
+#include ColorLCDShield
 
+void setup() {
+  Serial.begin(9600);
+  LCDShield lcd;
 
+}
 
-void loop();
+void loop() {
+
+  lcd_key = userInputs();
+
+  switch (lcd_key)
+  {
+  case btnNONE:
+    {
+    }
+  case btnS1: 
+    {
+
+    }
+  case btnS2:
+    {
+
+    }
+  case btnS3:
+    {
+
+    }
+  }
+}
+
