@@ -3,12 +3,16 @@
  * September 5, 2013
  */
 
-#include ColorLCDShield
+#include <ColorLCDShield.h>
 
+ 
+ 
 void setup() {
   Serial.begin(9600);
   LCDShield lcd;
-
+  lcd.init(PHILIPS);  // Initializes lcd, using an PHILIPS driver
+  lcd.contrast(-51);
+  lcd.clear(BACKGROUND);
 }
 
 void loop() {
