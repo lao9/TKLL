@@ -13,6 +13,8 @@ int lcd_key;
 
 LCDShield lcd;
 
+ 
+ 
 void setup() {
   Serial.begin(9600);
   /* Initialize the LCD, set the contrast, clear the screen */
