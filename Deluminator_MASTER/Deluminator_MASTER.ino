@@ -5,12 +5,11 @@
 
 #include <ColorLCDShield.h>
 int lcd_key;
+int seconds, tenthsecs;
 
-//Defines buttons for user interface
-#define btnNONE 0
-#define btnS1 1
-#define btnS2 2
-#define btnS3 3
+#define SECONDS 00
+#define TENTHSECS 0
+
 
 LCDShield lcd;
 
@@ -20,11 +19,15 @@ void setup() {
   lcd.init(PHILIPS);
   lcd.contrast(-51);
   lcd.clear(BLACK);
+  
+  // Set the time variables
+  seconds = SECONDS;
+  tenthsecs = TENTHSECS;
 }
 
 void loop() {
 
-  lcd_key = userInputs();
+  lcd_key = buttonPress();
 
   switch (lcd_key)
   {
@@ -32,11 +35,11 @@ void loop() {
     {
     }
   case btnS1: 
-    {
+    { //TIME INCREASE
 
     }
   case btnS2:
-    {
+    { //TIME DECREASE
 
     }
   case btnS3:
