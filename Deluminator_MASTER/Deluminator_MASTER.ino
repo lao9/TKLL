@@ -2,6 +2,7 @@
  * Created by Tyler Hobbs, Lucy Corippo, Kavitha Prasanna, Lauren Oliveri
  * September 5, 2013
  */
+
 #include <ColorLCDShield.h>
 int lcd_key;
 
@@ -13,8 +14,6 @@ int lcd_key;
 
 LCDShield lcd;
 
- 
- 
 void setup() {
   Serial.begin(9600);
   /* Initialize the LCD, set the contrast, clear the screen */
