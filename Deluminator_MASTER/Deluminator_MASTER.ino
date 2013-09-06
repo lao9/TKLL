@@ -10,6 +10,10 @@ int seconds, tenthsecs;
 #define SECONDS 00
 #define TENTHSECS 0
 
+#define btnNONE 2
+#define btnS1 3
+#define btnS2 4
+#define btnS3 5
 
 LCDShield lcd;
 
@@ -19,6 +23,11 @@ void setup() {
   lcd.init(PHILIPS);
   lcd.contrast(-51);
   lcd.clear(BLACK);
+  
+  // Set the input Pins
+  pinMode(btnS1,INPUT);
+  pinMode(btnS2,INPUT);
+  pinMode(btnS3,INPUT);
   
   // Set the time variables
   seconds = SECONDS;
