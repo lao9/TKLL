@@ -8,10 +8,6 @@
 
 int buttonPress()
 {
-  pinMode(btnS1,INPUT);
-  pinMode(btnS2,INPUT);
-  pinMode(btnS3,INPUT);
-
   digitalWrite(btnS1,HIGH);
   digitalWrite(btnS2,HIGH);
   digitalWrite(btnS3,HIGH);
