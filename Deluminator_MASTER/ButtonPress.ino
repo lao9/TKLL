@@ -14,7 +14,7 @@ int buttonPress()
 
   if(!digitalRead(btnS1)) // If the 1st button pin reads LOW, a press of the 1st button is returned
   {
-    delay(50);
+   // delay(50);
     return(btnS1);
   }
   else if(!digitalRead(btnS2)) // If the 2nd button pin reads LOW, a press of the 2nd button is returned
