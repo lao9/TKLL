@@ -7,29 +7,29 @@
  */
 
 int buttonPress()
-{
+{  
   digitalWrite(btnS1,HIGH);
   digitalWrite(btnS2,HIGH);
   digitalWrite(btnS3,HIGH);
 
   if(!digitalRead(btnS1)) // If the 1st button pin reads LOW, a press of the 1st button is returned
   {
-    delay(200);
+    delay(50);
     return(btnS1);
   }
   else if(!digitalRead(btnS2)) // If the 2nd button pin reads LOW, a press of the 2nd button is returned
   {
-    delay(200);
+  //  delay(100);
     return(btnS2);
   }
   else if(!digitalRead(btnS3)) // If the 3rd button pin reads LOW, a press of the 3rd button is returned
   {
-    delay(200);
+    delay(100);
     return(btnS3);
   }
   else if(!digitalRead(btnS1) && !digitalRead(btnS2))
   {
-    delay(200);
+    delay(100);
     return(btnNONE);
   }
   else

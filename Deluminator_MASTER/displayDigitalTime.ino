@@ -10,10 +10,14 @@ void displayDigitalTime(int s, int ts)
 
   for (int i=0; i<4; i++) {
     timeChar[i] += 48;
-    Serial.print(timeChar[i]);
   }
+  timeChar[4] = ' ';
+  timeChar[5] = ' ';
+  timeChar[6] = ' ';
+  timeChar[7] = ' ';
+  timeChar[8] = ' ';
 
   /* Print the time on the clock */
-  lcd.setStr(timeChar, 55, 30, CORAL, BLACK);
+  lcd.setStr(timeChar, 55, 50, CORAL, BLACK);
 }
 
