@@ -15,7 +15,5 @@ void displayDigitalTime(int s, int ts)
 
   /* Print the time on the clock */
   lcd.setStr(timeChar, 55, 30, CORAL, BLACK);
-  
-
 }
 
