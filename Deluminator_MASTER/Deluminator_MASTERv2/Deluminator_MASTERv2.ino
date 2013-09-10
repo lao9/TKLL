@@ -38,6 +38,7 @@ void setup() {
 
 void loop() {
 
+  lcd.setStr("Press Button S1 to increment time",10,10,BLACK,WHITE);
   lcd_key = buttonPress();
 
   switch (lcd_key)
