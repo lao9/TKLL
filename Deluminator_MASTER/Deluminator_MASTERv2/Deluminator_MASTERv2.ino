@@ -105,6 +105,7 @@ void loop() {
         }
         firstTime = !firstTime; 
       }
+      displayDigitalTime(seconds,tenthsecs);
       break;
     }
   case btnS3:
