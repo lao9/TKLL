@@ -33,11 +33,12 @@ void incrementTime() { //INCREASE TIME CODE
     userCommandMsg();
     seconds = 0;
     tenthsecs = 0;
-    seconds = 0;
-    tenthsecs = 0;
+    int stat_time, previous;
     int counter = 0;
+    long tenthsec_int;
     long tot_tenthsec = 0;
     int error_sum = 0;
+    int avg_tenthsec, error, avg_error;
   }
 }
 
