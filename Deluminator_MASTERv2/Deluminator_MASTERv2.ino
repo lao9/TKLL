@@ -13,7 +13,6 @@ int startTime, currTime;
 
 // Define variables for statistcs calculations
 int stat_time, previous;
-boolean first = true;
 int counter = 0;
 long tenthsec_int;
 long tot_tenthsec = 0;
@@ -75,9 +74,12 @@ void loop() {
       break;
     }
   case btnS3:
-    {  // When S3 button is pressed, reset the time to 00.0
+    {  // When S3 button is pressed, reset the time and variables to 0
       seconds = 0;
       tenthsecs = 0;
+      int counter = 0;
+      long tot_tenthsec = 0;
+      int error_sum = 0;
       break;
     }
   }
