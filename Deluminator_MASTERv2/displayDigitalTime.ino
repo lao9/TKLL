@@ -7,7 +7,7 @@
 void displayDigitalTime(int s, int ts)
 {
   char timeChar[8] = {  // put the time variables in a character string (XX.X)
-    s/10, s%10, -2, ts  };
+    s/10, s%10, -2, ts    };
 
   for (int i=0; i<4; i++) {  // Convert the character string into ASCII numbers
     timeChar[i] += 48;
@@ -20,12 +20,13 @@ void displayDigitalTime(int s, int ts)
 void displayDigitalStats(int ts)
 {
   char timeChar[8] = {
-    -2, ts  };
+    ts/10000, (ts/1000)%10, -2, (ts/100)%10  };
 
-  for (int i=0; i<2; i++){
+  for (int i=0; i<4; i++){
     timeChar[i] += 48;
   }
 
   lcd.setStr(timeChar, 75, 50, WHITE, BLACK);
 }
+
 

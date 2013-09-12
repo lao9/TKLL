@@ -17,7 +17,7 @@ boolean first = true;
 unsigned long previous;
 int counter = 0;
 unsigned long tenthsec_int;
-unsigned long tot_tenthsec;
+unsigned long tot_tenthsec = 0;
 unsigned long sq_error_sum;
 unsigned long avg_tenthsec;
 unsigned long st_dev;
@@ -143,6 +143,7 @@ void loop() {
         }
         displayDigitalTime(seconds,tenthsecs);  // Display the incremented digital time
         firstTime = !firstTime; 
+        first = !first;
       }
       break;
     }
