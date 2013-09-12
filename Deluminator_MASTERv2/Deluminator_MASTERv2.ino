@@ -31,9 +31,11 @@ void setup() {
   pinMode(btnS2,INPUT);
   pinMode(btnS3,INPUT);
 
-  // Set the time variables
+  // Set the time variables to Initial zero
   seconds = SECONDS;
   tenthsecs = TENTHSECS;
+  
+  //Print the user command strings
   lcd.setStr("Press:",1,1,WHITE,BLACK);
   lcd.setStr("S1 to increase",15,1,WHITE,BLACK);
   lcd.setStr("S2 to decrease",29,1,WHITE,BLACK);
@@ -49,29 +51,32 @@ void loop() {
   {
   case btnNONE:
     {
+      // when no button is pressed, display current Time status
       displayDigitalTime(seconds,tenthsecs);
       break;
     }
   case btnS1: 
     { //TIME INCREASE
       if (firstTime) {
-        startTime = millis();
+        startTime = millis();  // set the start time for measuring each tenth-second
         firstTime = !firstTime;
       }
 
-      currTime = millis() - startTime;
+      currTime = millis() - startTime;  // find the current time to count up to a tenth-second
 
-      if (currTime > 76) {
+      if (currTime > 82) {  // once the current time reaches the tenth-second point, increment the time
         if (tenthsecs < 9) {
           tenthsecs += 1;
         }
         else {
           seconds += 1;
           tenthsecs = 0;
-        }
-        firstTime = !firstTime; 
+        } 
+        displayDigitalTime(seconds,tenthsecs);  // Display the incremented digital time 
+        firstTime = !firstTime;
       }
-      displayDigitalTime(seconds,tenthsecs);
+      
+      // Once 30 seconds is reached, display the "FUN" code and reset the clock with the command strings.
       if (seconds >= 30) {
         displayDigitalTime(30,0);
         delay(500);
@@ -91,13 +96,13 @@ void loop() {
   case btnS2:
     { //TIME DECREASE
       if (firstTime) {
-        startTime = millis();
+        startTime = millis();  // set the start time for measuring each tenth-second
         firstTime = !firstTime;
       }
 
-      currTime = millis() - startTime;
+      currTime = millis() - startTime;  // find the current time to count up to a tenth-second
 
-      if (currTime > 76) {
+      if (currTime > 82) {  // once the current time reaches the tenth-second point, increment the time
         if (seconds > 0) {
           if (tenthsecs > 0) {
             tenthsecs -= 1;
@@ -115,13 +120,13 @@ void loop() {
             tenthsecs = 0;
           } 
         }
+        displayDigitalTime(seconds,tenthsecs);  // Display the incremented digital time
         firstTime = !firstTime; 
       }
-      displayDigitalTime(seconds,tenthsecs);
       break;
     }
   case btnS3:
-    {
+    {  // When S3 button is pressed, reset the time to 00.0
       seconds = 0;
       tenthsecs = 0;
       break;
