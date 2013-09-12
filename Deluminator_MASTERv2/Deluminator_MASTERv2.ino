@@ -34,15 +34,15 @@ void setup() {
   // Set the time variables
   seconds = SECONDS;
   tenthsecs = TENTHSECS;
+  lcd.setStr("Press S1 to ",1,1,WHITE,BLACK);
+  lcd.setStr("increase time",14,1,WHITE,BLACK);
+  lcd.setStr("Press S2 to ",40,1,WHITE,BLACK);
+  lcd.setStr("decrease time",53,1,WHITE,BLACK);
 }
 
 void loop() {
 
   lcd_key = buttonPress();
-  lcd.setStr("Press S1 to ",1,1,WHITE,BLACK);
-  lcd.setStr("increase time",14,1,WHITE,BLACK);
-  lcd.setStr("Press S2 to ",40,1,WHITE,BLACK);
-  lcd.setStr("decrease time",53,1,WHITE,BLACK);
 
   switch (lcd_key)
   {
