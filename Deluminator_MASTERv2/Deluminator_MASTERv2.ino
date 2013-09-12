@@ -16,11 +16,11 @@ int stat_time;
 boolean first = true;
 int previous;
 int counter = 0;
-int tenthsec_int;
-int tot_tenthsec = 0;
+long tenthsec_int;
+long tot_tenthsec = 0;
 int error_sum = 0;
 int avg_tenthsec;
-int st_dev;
+int avg_error;
 
 // Define the button pin numbers and the baseline seconds/tenth-seconds numbers 
 #define SECONDS 00
@@ -142,8 +142,7 @@ void loop() {
           } 
         }
         displayDigitalTime(seconds,tenthsecs);  // Display the incremented digital time
-        firstTime = !firstTime; 
-        first = !first;
+        firstTime = !firstTime;
       }
       break;
     }

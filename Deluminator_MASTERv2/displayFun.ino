@@ -33,7 +33,11 @@ void displayFun()
   lcd.clear(BLACK);
   calc();
   delay(800);
-  lcd.setStr("Total Elapsed Time", 2, 20, WHITE,BLACK);
+  lcd.setStr("Total Time:", 1, 1, WHITE,BLACK);
   displayDigitalStats(tot_tenthsec);
+  lcd.setStr("Mean Interval:", 30, 1, WHITE, BLACK);
+  displayDigitalStat2(avg_tenthsec);
+  lcd.setStr("Mean Error:",60,1,WHITE,BLACK);
+  displayDigitalStat3(avg_error);
   delay(5000);
 }

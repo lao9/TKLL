@@ -14,10 +14,10 @@ void displayDigitalTime(int s, int ts)
   }
 
   /* Print the time on the clock */
-  lcd.setStr(timeChar, 75, 50, WHITE, BLACK);
+  lcd.setStr(timeChar, 70, 50, WHITE, BLACK);
 }
 
-void displayDigitalStats(int ts)
+void displayDigitalStats(long ts)
 {
   int t1 = ts/10000;
   int t2 = (ts/1000)%10;
@@ -30,6 +30,38 @@ void displayDigitalStats(int ts)
       timeChar[i] += 48;
     }
     
-    lcd.setStr(timeChar, 75, 50, WHITE, BLACK);
+    lcd.setStr(timeChar, 15, 50, WHITE, BLACK);
 }
 
+void displayDigitalStat2(int ts)
+{
+  int t1 = 0;
+  int t2 = ts/100;
+  int t3 = (ts%100)/10;
+  
+  char timeChar[8] = {
+    t1, -2, t2, t3};
+    
+    for (int i=0; i<4; i++){
+      timeChar[i] += 48;
+    }
+    
+    lcd.setStr(timeChar, 45, 50, WHITE, BLACK);
+}
+    
+void displayDigitalStat3(int ts)
+{
+  int t1 = ts/100;
+  int t2 = (ts%100)/10;
+  int t3 = (ts%100)%10;
+  
+  char timeChar[8] = {
+    -2, t1, t2, t3};
+    
+    for (int i=0; i<4; i++){
+      timeChar[i] += 48;
+    }
+    
+    lcd.setStr(timeChar, 75, 47, WHITE, BLACK);
+    
+}
