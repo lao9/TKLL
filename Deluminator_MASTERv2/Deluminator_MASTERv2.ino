@@ -76,7 +76,7 @@ void loop() {
         delay(500);
         lcd.clear(WHITE);
         displayFun();
-        delay(5000);
+        delay(2000);
         lcd.clear(BLACK);
         seconds = 0;
         tenthsecs = 0;
