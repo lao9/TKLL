@@ -19,17 +19,14 @@ int buttonPress()
   }
   else if(!digitalRead(btnS2)) // If the 2nd button pin reads LOW, a press of the 2nd button is returned
   {
-  //  delay(100);
     return(btnS2);
   }
   else if(!digitalRead(btnS3)) // If the 3rd button pin reads LOW, a press of the 3rd button is returned
   {
-    delay(100);
     return(btnS3);
   }
   else if(!digitalRead(btnS1) && !digitalRead(btnS2))
   {
-    delay(100);
     return(btnNONE);
   }
   else

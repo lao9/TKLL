@@ -117,17 +117,9 @@ void loop() {
     }
   case btnS3:
     {
+      seconds = 0;
+      tenthsecs = 0;
       break;
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
