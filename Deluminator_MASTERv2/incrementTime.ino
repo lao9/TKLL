@@ -28,11 +28,16 @@ void incrementTime() { //INCREASE TIME CODE
     displayFun();   // Display the FUN MESSAGE AND DISPLAY STATISTICS
     delay(2000);
 
-    // Reset the LCD screen, display the command messages, and reset the time to 00.0 
+    // Reset the LCD screen, display the command messages, and reset the time and variables to 0 
     lcd.clear(BLACK);
     userCommandMsg();
     seconds = 0;
     tenthsecs = 0;
+    seconds = 0;
+    tenthsecs = 0;
+    int counter = 0;
+    long tot_tenthsec = 0;
+    int error_sum = 0;
   }
 }
 
