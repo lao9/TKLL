@@ -11,6 +11,7 @@ void statistics()
   tenthsec_int = stat_time - previous;
   previous = stat_time;
   tot_tenthsec = tot_tenthsec + tenthsec_int;
+  Serial.println(tot_tenthsec);
   
   //error
   unsigned long error = tenthsec_int - .1;

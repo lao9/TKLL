@@ -30,8 +30,10 @@ void displayFun()
   
   
   // Display Statistics
+  lcd.clear(BLACK);
   calc();
   delay(800);
-  lcd.setStr("Total Elapsed Time", 2, 20, BLACK, WHITE);
+  lcd.setStr("Total Elapsed Time", 2, 20, WHITE,BLACK);
   displayDigitalStats(tot_tenthsec);
+  delay(5000);
 }

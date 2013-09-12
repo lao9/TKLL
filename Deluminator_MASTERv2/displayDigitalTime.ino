@@ -13,10 +13,14 @@ void displayDigitalTime(int s, int ts)
 
 void displayDigitalStats(int ts)
 {
+  int t1 = ts/10000;
+  int t2 = (ts/1000)%10;
+  int t3 = (ts/100)%10;
+  
   char timeChar[8] = {
-    -2, ts};
+    t1, t2, -2, t3};
     
-    for (int i=0; i<2; i++){
+    for (int i=0; i<4; i++){
       timeChar[i] += 48;
     }
     
