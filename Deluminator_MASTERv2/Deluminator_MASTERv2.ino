@@ -34,10 +34,11 @@ void setup() {
   // Set the time variables
   seconds = SECONDS;
   tenthsecs = TENTHSECS;
-  lcd.setStr("Press S1 to ",1,1,WHITE,BLACK);
-  lcd.setStr("increase time",14,1,WHITE,BLACK);
-  lcd.setStr("Press S2 to ",40,1,WHITE,BLACK);
-  lcd.setStr("decrease time",53,1,WHITE,BLACK);
+  lcd.setStr("Press:",1,1,WHITE,BLACK);
+  lcd.setStr("S1 to increase",15,1,WHITE,BLACK);
+  lcd.setStr("S2 to decrease",29,1,WHITE,BLACK);
+  lcd.setStr("S3 to reset",43,1,WHITE,BLACK);
+  
 }
 
 void loop() {
@@ -78,10 +79,10 @@ void loop() {
         displayFun();
         delay(2000);
         lcd.clear(BLACK);
-        lcd.setStr("Press S1 to ",1,1,WHITE,BLACK);
-        lcd.setStr("increase time",14,1,WHITE,BLACK);
-        lcd.setStr("Press S2 to ",40,1,WHITE,BLACK);
-        lcd.setStr("decrease time",53,1,WHITE,BLACK);
+         lcd.setStr("Press:",1,1,WHITE,BLACK);
+         lcd.setStr("S1 to increase",15,1,WHITE,BLACK);
+         lcd.setStr("S2 to decrease",29,1,WHITE,BLACK);
+         lcd.setStr("S3 to reset",43,1,WHITE,BLACK);
         seconds = 0;
         tenthsecs = 0;
       }
