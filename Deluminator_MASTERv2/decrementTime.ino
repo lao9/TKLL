@@ -7,7 +7,7 @@ void decrementTime() {
 
   currTime = millis() - startTime;  // find the current time to count up to a tenth-second
 
-  if (currTime > 82) {  // once the current time reaches the tenth-second point, increment the time
+  if (currTime > 98) {  // once the current time reaches the tenth-second point, increment the time
     if (seconds > 0) {
       if (tenthsecs > 0) {
         tenthsecs -= 1;
@@ -15,15 +15,13 @@ void decrementTime() {
       else if (tenthsecs == 0) {
         seconds -= 1;
         tenthsecs = 9;
-      } 
-      stat_time = millis();
-      statistics();
+      }
+      statistics();  // Run the statistics flow code to calculate stats at each decrement
     }
     else {  // For robustness, to confirm that timer does not go below 00.0
       if (tenthsecs > 0) {
         tenthsecs -= 1;
-        stat_time = millis();
-        statistics();
+        statistics();  // Run the statistics flow code to calculate stats at each decrement
       }
       else if (tenthsecs == 0) {
         tenthsecs = 0;
@@ -31,7 +29,5 @@ void decrementTime() {
     }
     displayDigitalTime(seconds,tenthsecs);  // Display the incremented digital time
     firstTime = !firstTime; 
-    first = !first;
   }
 }
-

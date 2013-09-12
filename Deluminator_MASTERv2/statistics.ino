@@ -1,28 +1,35 @@
 void statistics()
 {
-  if (first){
-    previous = startTime;
-    first = !first;
+  /*the stat_time is assumed to updated every .1 second
+   therefore, if we compare the previous stat_time to the current time
+   we can take the average and standard deviation it should be around 0.1
+   */
+  stat_time = millis();
+  counter = counter + 1;    // Keeps track of # of elements to average
+  tenthsec_int = stat_time - previous;  // Length of 0.1 second interval
+  previous = stat_time;    // Update the previous time with the "current" time
+
+  // To account for lapses in button pressing, set the first 0.1 second interval length to 100 milliseconds.
+  // This decreases statistical accuracy when multiple button presses occur.
+  if (tenthsec_int > 102) {
+    tenthsec_int = 100;
   }
-  //the stat_time is assumed to updated every .1 second
-  //therefore, if we compare the previous stat_time to the current time
-  //we can take the average and standard deviation it should be around .1
-  counter = counter + 1;
-  tenthsec_int = stat_time - previous;
-  previous = stat_time;
-  tot_tenthsec += tenthsec_int;
-  Serial.println(tot_tenthsec);
   
-  //error
-  unsigned long error = tenthsec_int - .1;
-  unsigned long square_error = pow(error, 2);
-  sq_error_sum += square_error;
+  tot_tenthsec += tenthsec_int;  // Sums the elapsed time intervals over button presses
+
+  //Calculates error of ideal and actual 0.1 second intervals
+  error = tenthsec_int - 100;
+  error = abs(error);
+  error_sum += error;  // sums the errors
 }
 
+// Calc() function finally calculates an average of the tenth-seconds intervals and errors over the entire time.
 void calc()
 {
   avg_tenthsec = tot_tenthsec/counter;
-  unsigned long avg_sq_error = sq_error_sum/counter;
-  st_dev = sqrt(avg_sq_error);
+  avg_error = error_sum/counter;
 }
+
+
+
 

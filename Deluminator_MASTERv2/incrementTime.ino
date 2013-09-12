@@ -7,7 +7,7 @@ void incrementTime() {
 
   currTime = millis() - startTime;  // find the current time to count up to a tenth-second
 
-  if (currTime > timeRange) {  // once the current time reaches the tenth-second point, increment the time
+  if (currTime > 82) {  // once the current time reaches the tenth-second point, increment the time
     if (tenthsecs < 9) {
       tenthsecs += 1;
     }
@@ -15,11 +15,9 @@ void incrementTime() {
       seconds += 1;
       tenthsecs = 0;
     }
-    stat_time = millis();
-    statistics();
+    statistics();  // Run the statistics flow code to calculate stats at each increment
     displayDigitalTime(seconds,tenthsecs);  // Display the incremented digital time 
     firstTime = !firstTime;
-    first = !first;
   }
 
   // Once 30 seconds is reached, display the "FUN" code and reset the clock with the command strings.

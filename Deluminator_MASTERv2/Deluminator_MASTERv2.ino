@@ -12,11 +12,13 @@ boolean firstTime = true;
 int startTime, currTime;
 
 // Define variables for statistcs calculations
-unsigned long stat_time, previous, tenthsec_int;
+int stat_time, previous;
 boolean first = true;
 int counter = 0;
-unsigned long tot_tenthsec = 0;
-unsigned long sq_error_sum, avg_tenthsec, st_dev;
+long tenthsec_int;
+long tot_tenthsec = 0;
+int error_sum = 0;
+int avg_tenthsec, error, avg_error;
 
 // Define the button pin numbers and the baseline seconds/tenth-seconds numbers 
 #define SECONDS 00
