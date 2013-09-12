@@ -39,6 +39,10 @@ void setup() {
 void loop() {
 
   lcd_key = buttonPress();
+  lcd.setStr("Press S1 to ",1,1,WHITE,BLACK);
+  lcd.setStr("increase time",14,1,WHITE,BLACK);
+  lcd.setStr("Press S2 to ",40,1,WHITE,BLACK);
+  lcd.setStr("decrease time",53,1,WHITE,BLACK);
 
   switch (lcd_key)
   {
@@ -72,6 +76,10 @@ void loop() {
         delay(500);
         lcd.clear(WHITE);
         displayFun();
+        delay(5000);
+        lcd.clear(BLACK);
+        seconds = 0;
+        tenthsecs = 0;
       }
       break;
     }
@@ -104,6 +112,7 @@ void loop() {
         }
         firstTime = !firstTime; 
       }
+      displayDigitalTime(seconds,tenthsecs);
       break;
     }
   case btnS3:
