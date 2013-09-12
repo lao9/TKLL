@@ -1,7 +1,7 @@
 void statistics()
 {
   if (first){
-    previous = millis();
+    previous = startTime;
     first = !first;
   }
 //the stat_time is assumed to updated every .1 second

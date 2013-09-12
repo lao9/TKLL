@@ -4,6 +4,8 @@
  */
 
 #include <ColorLCDShield.h>
+
+// Initiate time and state variables for code 
 int lcd_key;
 int seconds, tenthsecs;
 boolean firstTime = true;
@@ -20,14 +22,15 @@ unsigned long sq_error_sum;
 unsigned long avg_tenthsec;
 unsigned long st_dev;
 
+// Define the button pin numbers and the baseline seconds/tenth-seconds numbers 
 #define SECONDS 00
 #define TENTHSECS 0
-
 #define btnNONE 2
 #define btnS1 3
 #define btnS2 4
 #define btnS3 5
 
+// Initiate the LCD Shield constructor
 LCDShield lcd;
 
 void setup() {
@@ -56,7 +59,7 @@ void setup() {
 
 void loop() {
 
-  lcd_key = buttonPress();
+  lcd_key = buttonPress();  // READ if a button is pressed
 
   switch (lcd_key)
   {
@@ -128,7 +131,7 @@ void loop() {
           stat_time = millis();
           statistics();
         }
-        else {
+        else {  // For robustness, to confirm that timer does not go below 00.0
           if (tenthsecs > 0) {
             tenthsecs -= 1;
             stat_time = millis();
@@ -140,6 +143,7 @@ void loop() {
         }
         displayDigitalTime(seconds,tenthsecs);  // Display the incremented digital time
         firstTime = !firstTime; 
+        first = !first;
       }
       break;
     }
