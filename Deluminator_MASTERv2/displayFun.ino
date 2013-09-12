@@ -27,4 +27,11 @@ void displayFun()
   lcd.setStr("           ", 2, 20, SLATE, WHITE);
   delay(800);
   lcd.setStr("You did it!", 2, 20, BLUE, WHITE);
+  
+  
+  // Display Statistics
+  calc();
+  delay(800);
+  lcd.setStr("Total Elapsed Time", 2, 20, BLACK, WHITE);
+  displayDigitalStats(tot_tenthsec);
 }

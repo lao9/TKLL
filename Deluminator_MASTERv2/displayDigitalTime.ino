@@ -11,3 +11,14 @@ void displayDigitalTime(int s, int ts)
   lcd.setStr(timeChar, 75, 50, WHITE, BLACK);
 }
 
+void displayDigitalStats(int ts)
+{
+  char timeChar[8] = {
+    -2, ts};
+    
+    for (int i=0; i<2; i++){
+      timeChar[i] += 48;
+    }
+    
+    lcd.setStr(timeChar, 75, 50, WHITE, BLACK);
+}

@@ -9,6 +9,17 @@ int seconds, tenthsecs;
 boolean firstTime = true;
 int startTime, currTime;
 
+// for statistcs calculations
+unsigned long stat_time;
+boolean first = true;
+unsigned long previous;
+int counter = 0;
+unsigned long tenthsec_int;
+unsigned long tot_tenthsec;
+unsigned long sq_error_sum;
+unsigned long avg_tenthsec;
+unsigned long st_dev;
+
 #define SECONDS 00
 #define TENTHSECS 0
 
@@ -64,10 +75,14 @@ void loop() {
       if (currTime > 76) {
         if (tenthsecs < 9) {
           tenthsecs += 1;
+          stat_time = millis();
+          statistics();
         }
         else {
           seconds += 1;
           tenthsecs = 0;
+          stat_time = millis();
+          statistics();
         }
         firstTime = !firstTime; 
       }
@@ -101,15 +116,21 @@ void loop() {
         if (seconds > 0) {
           if (tenthsecs > 0) {
             tenthsecs -= 1;
+            stat_time = millis();
+            statistics();
           }
           else if (tenthsecs == 0) {
             seconds -= 1;
             tenthsecs = 9;
+            stat_time = millis();
+            statistics();
           } 
         }
         else {
           if (tenthsecs > 0) {
             tenthsecs -= 1;
+            stat_time = millis();
+            statistics();
           }
           else if (tenthsecs == 0) {
             tenthsecs = 0;
