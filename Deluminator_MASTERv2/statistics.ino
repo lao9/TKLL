@@ -11,18 +11,17 @@ void statistics()
   tenthsec_int = stat_time - previous;
   previous = stat_time;
   tot_tenthsec = tot_tenthsec + tenthsec_int;
-  Serial.println(tot_tenthsec);
+  Serial.println(tenthsec_int);
   
   //error
-  unsigned long error = tenthsec_int - .1;
-  unsigned long square_error = pow(error, 2);
-  sq_error_sum = sq_error_sum + square_error;
+  int error = tenthsec_int - 100;
+  error = abs(error);
+  error_sum = error_sum + error;
 }
 
 void calc()
 {
   
   avg_tenthsec = tot_tenthsec/counter;
-  unsigned long avg_sq_error = sq_error_sum/counter;
-  st_dev = sqrt(avg_sq_error);
+  int avg_error = error_sum/counter;
 }

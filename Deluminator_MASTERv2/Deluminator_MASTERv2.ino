@@ -12,15 +12,15 @@ boolean firstTime = true;
 int startTime, currTime;
 
 // for statistcs calculations
-unsigned long stat_time;
+int stat_time;
 boolean first = true;
-unsigned long previous;
+int previous;
 int counter = 0;
-unsigned long tenthsec_int;
-unsigned long tot_tenthsec = 0;
-unsigned long sq_error_sum;
-unsigned long avg_tenthsec;
-unsigned long st_dev;
+int tenthsec_int;
+int tot_tenthsec = 0;
+int error_sum = 0;
+int avg_tenthsec;
+int st_dev;
 
 // Define the button pin numbers and the baseline seconds/tenth-seconds numbers 
 #define SECONDS 00
@@ -119,7 +119,7 @@ void loop() {
 
       currTime = millis() - startTime;  // find the current time to count up to a tenth-second
 
-      if (currTime > 82) {  // once the current time reaches the tenth-second point, increment the time
+      if (currTime > 98) {  // once the current time reaches the tenth-second point, increment the time
         if (seconds > 0) {
           if (tenthsecs > 0) {
             tenthsecs -= 1;

@@ -31,6 +31,5 @@ void displayDigitalStats(int ts)
     }
     
     lcd.setStr(timeChar, 75, 50, WHITE, BLACK);
-
 }
 
