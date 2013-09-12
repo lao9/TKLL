@@ -1,4 +1,4 @@
-void decrementTime() {
+void decrementTime() { //DECREASE TIME CODE
 
   if (firstTime) {
     startTime = millis();  // set the start time for measuring each tenth-second
