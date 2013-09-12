@@ -11,16 +11,12 @@ int seconds, tenthsecs;
 boolean firstTime = true;
 int startTime, currTime;
 
-// for statistcs calculations
-unsigned long stat_time;
+// Define variables for statistcs calculations
+unsigned long stat_time, previous, tenthsec_int;
 boolean first = true;
-unsigned long previous;
 int counter = 0;
-unsigned long tenthsec_int;
 unsigned long tot_tenthsec = 0;
-unsigned long sq_error_sum;
-unsigned long avg_tenthsec;
-unsigned long st_dev;
+unsigned long sq_error_sum, avg_tenthsec, st_dev;
 
 // Define the button pin numbers and the baseline seconds/tenth-seconds numbers 
 #define SECONDS 00
@@ -50,10 +46,7 @@ void setup() {
   tenthsecs = TENTHSECS;
 
   //Print the user command strings
-  lcd.setStr("Press:",1,1,WHITE,BLACK);
-  lcd.setStr("S1 to increase",15,1,WHITE,BLACK);
-  lcd.setStr("S2 to decrease",29,1,WHITE,BLACK);
-  lcd.setStr("S3 to reset",43,1,WHITE,BLACK);
+  userCommandMsg();
 
 }
 
@@ -70,81 +63,13 @@ void loop() {
       break;
     }
   case btnS1: 
-    { //TIME INCREASE
-      if (firstTime) {
-        startTime = millis();  // set the start time for measuring each tenth-second
-        firstTime = !firstTime;
-      }
-
-      currTime = millis() - startTime;  // find the current time to count up to a tenth-second
-
-      if (currTime > 82) {  // once the current time reaches the tenth-second point, increment the time
-        if (tenthsecs < 9) {
-          tenthsecs += 1;
-
-        }
-        else {
-          seconds += 1;
-          tenthsecs = 0;
-        }
-        stat_time = millis();
-        statistics();
-        displayDigitalTime(seconds,tenthsecs);  // Display the incremented digital time 
-        firstTime = !firstTime; 
-      }
-
-      // Once 30 seconds is reached, display the "FUN" code and reset the clock with the command strings.
-      if (seconds >= 30) {
-        displayDigitalTime(30,0);
-        delay(500);
-        lcd.clear(WHITE);
-        displayFun();
-        delay(2000);
-        lcd.clear(BLACK);
-        lcd.setStr("Press:",1,1,WHITE,BLACK);
-        lcd.setStr("S1 to increase",15,1,WHITE,BLACK);
-        lcd.setStr("S2 to decrease",29,1,WHITE,BLACK);
-        lcd.setStr("S3 to reset",43,1,WHITE,BLACK);
-        seconds = 0;
-        tenthsecs = 0;
-      }
+    {
+      incrementTime();   //TIME INCREASE FUNCTION
       break;
     }
   case btnS2:
-    { //TIME DECREASE
-      if (firstTime) {
-        startTime = millis();  // set the start time for measuring each tenth-second
-        firstTime = !firstTime;
-      }
-
-      currTime = millis() - startTime;  // find the current time to count up to a tenth-second
-
-      if (currTime > 82) {  // once the current time reaches the tenth-second point, increment the time
-        if (seconds > 0) {
-          if (tenthsecs > 0) {
-            tenthsecs -= 1;
-          }
-          else if (tenthsecs == 0) {
-            seconds -= 1;
-            tenthsecs = 9;
-          } 
-          stat_time = millis();
-          statistics();
-        }
-        else {  // For robustness, to confirm that timer does not go below 00.0
-          if (tenthsecs > 0) {
-            tenthsecs -= 1;
-            stat_time = millis();
-            statistics();
-          }
-          else if (tenthsecs == 0) {
-            tenthsecs = 0;
-          } 
-        }
-        displayDigitalTime(seconds,tenthsecs);  // Display the incremented digital time
-        firstTime = !firstTime; 
-        first = !first;
-      }
+    {
+      decrementTime();  //TIME DECREASE FUNCTION
       break;
     }
   case btnS3:
@@ -155,3 +80,4 @@ void loop() {
     }
   }
 }
+
